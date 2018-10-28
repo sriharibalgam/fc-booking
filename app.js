@@ -7,11 +7,12 @@ var parser = require("body-parser");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var seatRouter = require('./routes/seats');
 var bookingRouter = require('./routes/booking');
 
 
 // Add security to the application
-app.use(helmet());
+// app.use(helmet());
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/booking', bookingRouter);
+app.use('/seats', seatRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,7 +57,7 @@ app.use(function(err, req, res, next) {
 
 // Start the server and let it listen for incoming requests on port 3000
 app.listen(4000, () => {
-  log(`Server is listening on port: 4000`)
+  console.log(`Server is listening on port: 4000`)
 })
 
 module.exports = app;
